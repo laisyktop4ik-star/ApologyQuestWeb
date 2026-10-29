@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#101912" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <title>Шёпот сосен — 3D приключение</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game" aria-label="Трёхмерная лесная игра"></canvas>
+    <div id="mobile-controls" class="hidden" aria-label="Сенсорное управление">
+      <div id="look-zone" aria-label="Проведите пальцем для поворота камеры"></div>
+      <div id="move-stick" class="joystick" aria-label="Джойстик движения"><div class="joystick-base"><span id="joystick-knob"></span></div></div>
+      <div class="mobile-actions"><button id="run-button" class="mobile-control-button">БЕГ</button><button id="action-button" class="mobile-control-button action">E</button></div>
+    </div>
+    <div id="vignette"></div>
+    <section id="start-screen" class="screen visible">
+      <div class="title-card">
+        <p class="eyebrow">АТМОСФЕРНОЕ ПРИКЛЮЧЕНИЕ</p>
+        <h1>ШЁПОТ<br><span>СОСЕН</span></h1>
+        <p>Иногда, чтобы найти что-то важное,<br>нужно пройти долгий путь...</p>
+        <button id="start-button">НАЧАТЬ ПУТЬ</button>
+        <small class="desktop-hint">WASD — движение · Shift — бег · E — действие · мышь — камера</small>
+        <small class="mobile-hint">Джойстик — идти · справа пальцем — камера · E — действие</small>
+      </div>
+    </section>
+    <section id="hud" class="hidden" aria-live="polite">
+      <div class="quest-panel">
+        <span class="quest-kicker">ТЕКУЩАЯ ЦЕЛЬ</span>
+        <strong id="objective">Найдите старый указатель у тропы</strong>
+        <div id="memory-pips"><i></i><i></i><i></i></div>
+      </div>
+      <div id="interaction" class="interaction hidden"><kbd>E</kbd><span></span></div>
+      <div class="stamina-wrap"><span>ВЫНОСЛИВОСТЬ</span><div><i id="stamina"></i></div></div>
+      <div id="crosshair">+</div>
+      <div id="danger" class="hidden">МЕДВЕДЬ БЛИЗКО</div>
+      <div id="toast" class="toast"></div>
+      <div class="controls-hint">Клик — захватить курсор · Esc — освободить</div>
+    </section>
+    <section id="letter-modal" class="screen">
+      <article class="letter">
+        <div class="photo-frame"><img id="final-photo" alt="Наша фотография" /></div>
+        <div class="letter-copy">
+          <p class="eyebrow">ПИСЬМО ДЛЯ <span id="girl-name"></span></p>
+          <h2>То, что я хотел сказать</h2>
+          <p id="apology-text"></p>
+          <blockquote id="final-phrase"></blockquote>
+          <button id="finish-button">ЗАВЕРШИТЬ ПРИКЛЮЧЕНИЕ</button>
+        </div>
+      </article>
+    </section>
+    <section id="ending" class="screen"><div class="ending-card"><p>СПАСИБО, ЧТО ПРОШЛА ЭТОТ ПУТЬ</p><h2>Конец — и, возможно,<br>новое начало.</h2><button id="replay-button">ПРОЙТИ ЕЩЁ РАЗ</button></div></section>
+    <aside id="settings">
+      <button id="settings-toggle" title="Настройки">⚙</button>
+      <div id="settings-panel" class="hidden"><label>Качество<select id="quality"><option value="low">Низкое</option><option value="medium">Среднее</option><option value="high" selected>Высокое</option></select></label><label><input id="sound" type="checkbox" checked /> Звук</label></div>
+    </aside>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
